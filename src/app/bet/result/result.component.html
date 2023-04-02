@@ -1,0 +1,72 @@
+<div class="container border mt-4 bg-light-blue">
+  <div class="row" style="height: 3rem">
+    <div class="col-md-4"></div>
+    <div class="col-md-8"></div>
+  </div>
+  <div class="row border bg-blue">
+    <div class="col-md-12 text-center text-light">Navigation Menu</div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-md-8">
+      <div class="container bg-blue border">
+        <div class="row">
+          <div class="col-md-12">
+            <h2 class="text-light">Today Result</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="clock-block">
+              <span>{{getFormatTime(resultData[0]?.start_time)}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-lg-6">
+            <div class="number-plate">
+              <span class="winning-number">{{resultData[0]?.winner}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="row bg-blue sub-box">
+        <div class="container sub-box-padding">
+          <div class="row">
+            <div class="col-lg-12">
+              <span class="text-light">Today's Previous Results</span>
+            </div>
+          </div>
+          <div class="row" *ngFor="let data of resultData;index as i">
+            <ng-container *ngIf="i">
+                <div class="col-lg-6 text-light">{{getFormatTime(data?.start_time)}}</div>
+                <div class="col-lg-6 text-light">Lucky No {{data?.winner}}</div>
+            </ng-container>
+          </div>
+          
+        </div>
+      </div>
+      <div class="row bg-blue sub-box mt-2">
+        <div class="container sub-box-padding">
+          <div class="row">
+            <div class="col-lg-12">
+              <span class="text-light">Notice Board</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 text-light">...............</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 text-light">...............</div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 text-light">...............</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

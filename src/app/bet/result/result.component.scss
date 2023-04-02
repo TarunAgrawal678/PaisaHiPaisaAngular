@@ -1,0 +1,36 @@
+.bg-blue{
+    background-color: #62a1cd;
+}
+.bg-light-blue{
+    background-color: #a3c3dc;
+}
+.clock-block{
+    border: 1px solid black;
+    width: 124px;
+    background: black;
+    color: red;
+    font-size: 29px;
+}
+.number-plate{
+    border: 1px solid black;
+    background: #fff;
+    font-weight: 900;
+    padding: 34px;
+    text-align: center;
+}
+.winning-number{
+    font-size: 10rem;
+    padding: 46px;
+    border: 1px solid black;
+    border-radius: 63%;
+}
+.sub-box{
+    border: 1px solid white;
+    border-radius: 25px;
+    width: 100%;
+}
+.sub-box-padding{
+    padding-left: 56px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}

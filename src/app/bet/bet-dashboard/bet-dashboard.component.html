@@ -1,0 +1,52 @@
+<div class="layout">
+  <!-- Navigation  -->
+  <nav class="nav">
+    <div class="navicon">
+      <div></div>
+    </div>
+
+    <a class="nav-items" href="/appjs/views/Profile.html">Profile</a>
+    <a class="nav-items" routerLink="/user/result">Result</a>
+    <a class="nav-items" (click)="logout()">Logout</a>
+    <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+        </div> -->
+  </nav>
+
+  <!--Timer-->
+  <div class="container mt-4">
+    <h1 id="headline">Time left to bet:</h1>
+    <div id="countdown">
+      <ul>
+        <li><span id="minutes"></span>{{display}}</li>
+        <!-- <li><span id="seconds"></span>Seconds</li> -->
+      </ul>
+      
+    </div>
+  </div>
+  <!--layout correct-->
+  <div class="layout1"></div>
+  <!--BET form-->
+  <div class="numbers">
+    <div class="num" *ngFor="let bet of bets;index as i">
+      <div class="number">{{ bet }}</div>
+      <!-- <form class="form" (ngSubmit)="confirmBet()"> -->
+        <input
+          class="input"
+          type="number"
+          [(ngModel)]="amountInput[i].amount"
+          placeholder="Enter Amount"
+          name="bet"
+        />
+
+        <button class="button" (click)="confirmBet(amountInput[i].amount,bet)">Bet</button>
+      <!-- </form> -->
+    </div>
+  </div>
+</div>

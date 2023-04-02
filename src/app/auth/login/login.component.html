@@ -1,0 +1,37 @@
+<div class="background">
+  <div class="shape"></div>
+  <div class="shape"></div>
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+  <h3>PaisaHiPaisa</h3>
+
+  <label for="username">Mobile Number</label>
+  <input
+    type="text"
+    class="red-border-class"
+    [ngClass]="{
+      'red-border-class':
+        loginFormControl['userName'].errors &&
+        loginFormControl['userName'].touched
+    }"
+    formControlName="userName"
+    placeholder="Phone"
+    id="name"
+    name="name"
+  />
+  <label for="password">Password</label>
+  <input
+    type="password"
+    formControlName="password"
+    placeholder="Password"
+    id="password"
+    name="password"
+    [ngClass]="{
+      'red-border-class':
+        loginFormControl['password'].errors &&
+        loginFormControl['password'].touched
+    }"
+  />
+
+  <button type="submit" class="text-dark">Log In</button>
+</form>
