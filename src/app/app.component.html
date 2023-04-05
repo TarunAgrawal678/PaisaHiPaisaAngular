@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2" *ngIf="isUserLoggedIn && userType==='admin'">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div [ngClass]="{'col-md-10':isUserLoggedIn && userType==='admin'}">
+      <div [ngClass]="{'main-content':isUserLoggedIn && userType==='admin'}">
+        <app-header *ngIf="isUserLoggedIn && userType==='admin'"></app-header>
+        <div [ngClass]="{'main-content-inner':isUserLoggedIn && userType==='admin'}">
+            <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer *ngIf="isUserLoggedIn && userType==='admin'"></app-footer>
+</div>

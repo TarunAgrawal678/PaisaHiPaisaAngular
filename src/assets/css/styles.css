@@ -91,6 +91,8 @@
 .main-content {
     width: 100%;
     background: #F3F8FB;
+    float: right;
+    width: 96%;
 }
 
 .main-content-inner {
@@ -129,7 +131,7 @@
 }
 
 .menu-inner {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
 }
 

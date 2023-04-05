@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorInterceptor } from './shared/interceptor/token-interceptor.interceptor';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { TokenInterceptorInterceptor } from './shared/interceptor/token-intercep
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    AdminModule,
     ToastrModule.forRoot()
   ],
   providers: [

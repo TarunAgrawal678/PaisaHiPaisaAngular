@@ -36,7 +36,10 @@ export class LoginComponent implements OnInit {
       data=>{
         if(data.status){
           this.toastr.success('Logged in successfully!');
-          this.router.navigate(['/user/dashboard']);
+          if(data.user.usertype==='admin')
+            this.router.navigate(['/admin']);
+          else
+            this.router.navigate(['/user/dashboard']);
         }else{
           this.toastr.error('Invalid credentials!!!');
         }

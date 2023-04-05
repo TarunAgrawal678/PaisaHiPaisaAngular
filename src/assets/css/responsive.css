@@ -115,10 +115,6 @@
 
 @media (min-width: 1200px) and (max-width: 1364px) {
 
-    /* sidebar */
-    .sidebar-menu {
-        width: 365px;
-    }
     .nav-btn {
         position: fixed;
         z-index: 99;
@@ -427,10 +423,6 @@
     }
     .mb-sm-40 {
         margin-bottom: 40px;
-    }
-    /* sidebar */
-    .sidebar-menu {
-        width: 365px;
     }
     .nav-btn {
         position: fixed;
