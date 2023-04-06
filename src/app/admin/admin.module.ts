@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { UsersComponent } from './user/users/users.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'users',
     component:UsersComponent
+  },
+  {
+    path: 'add-user/:id',
+    component:AddUserComponent
   },
 ];
 
@@ -34,6 +39,7 @@ const routes: Routes = [
     CommonModule,
     MatTreeModule,
     MatIconModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   exports:[

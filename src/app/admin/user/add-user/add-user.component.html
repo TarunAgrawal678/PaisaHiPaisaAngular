@@ -1,1 +1,106 @@
-<p>add-user works!</p>
+<div class="page-container">
+  <div class="main-content">
+    <div class="main-content-inner">
+      <div class="row">
+        <div class="col-lg-6 col-ml-12">
+          <div class="row">
+            <div class="col-12 mt-5">
+              <div class="card">
+                <div class="card-body">
+                  <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
+                    <div class="form-group">
+                      <h4 class="header-title">Add User details</h4>
+                      <label for="example-text-input" class="col-form-label"
+                        >Name<span class="text-danger">*</span></label
+                      >
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Name"
+                        id="example-text-input"
+                        name="name"
+                        formControlName="name"
+                        
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword" class="">Password<span class="text-danger">*</span></label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="inputPassword"
+                        name="password"
+                        placeholder="Password"
+                        formControlName="password"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="example-text-input" class="col-form-label"
+                        >State<span class="text-danger">*</span></label
+                      >
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="State"
+                        name="state"
+                        id="example-text-input"
+                        formControlName="state"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="example-text-input" class="col-form-label"
+                        >City<span class="text-danger">*</span></label
+                      >
+                      <input
+                        class="form-control"
+                        type="text"
+                        placeholder="City"
+                        name="city"
+                        id="example-text-input"
+                        formControlName="city"
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label for="example-tel-input" class="col-form-label"
+                        >Mobile Number<span class="text-danger">*</span></label
+                      >
+                      <input
+                        class="form-control"
+                        type="tel"
+                        placeholder="Mobile Number"
+                        name="mobile_number"
+                        id="example-tel-input"
+                        formControlName="mobileNumber"
+                      />
+                    </div>
+                    <div class="form-group">
+                        <label for="wallet_balance" class="col-form-label"
+                          >Wallet Balance<span class="text-danger">*</span></label
+                        >
+                        <input
+                          class="form-control"
+                          type="number"
+                          placeholder="Wallet Balance"
+                          name="wallet_balance"
+                          id="example-tel-input"
+                          formControlName="walletBalance"
+                        />
+                      </div>
+                    <button class="btn btn-primary mb-3">{{buttonLabel}}</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- Textual inputs end -->
+
+            <!-- main content area end -->
+            <!-- footer area start-->
+            <footer></footer>
+            <!-- footer area end-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,27 +7,24 @@
           <thead class="text-capitalize">
             <tr>
               <th>Name</th>
-              <th>User ID</th>
               <th>Mobile Number</th>
               <th>Amount</th>
               <th>Type</th>
-              <th>Timestamp</th>
-              <th>Status</th>
+              <th>Action</th>
               <th></th>
-
             </tr>
           </thead>
           <tbody>
-              <tr>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td>test</td>
-                <td></td>
-
+              <tr *ngFor="let user of users;index as i">
+                <td>{{user.name}}</td>
+                <td>{{user.mobile_number}}</td>
+                <td>{{user.wallet_balance}}</td>
+                <td>{{user.usertype}}</td>
+                <td> 
+                  <i class="fa fa-edit text-info pointer" (click)="editUser(user.id)"></i>&nbsp;
+                  <i class="fa fa-history pointer"></i>&nbsp;
+                  <i class="fa fa-trash text-danger pointer" (click)="deleteUser(user.id)"></i>
+                </td>
               </tr>
           </tbody>
 
