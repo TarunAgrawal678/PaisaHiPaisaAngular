@@ -3,7 +3,7 @@
     <div class="col-md-2" *ngIf="isUserLoggedIn && userType==='admin'">
       <app-sidebar></app-sidebar>
     </div>
-    <div [ngClass]="{'col-md-10':isUserLoggedIn && userType==='admin'}">
+    <div class="pr-0" [ngClass]="{'col-md-10':isUserLoggedIn && userType==='admin'}">
       <div [ngClass]="{'main-content':isUserLoggedIn && userType==='admin'}">
         <app-header *ngIf="isUserLoggedIn && userType==='admin'"></app-header>
         <div [ngClass]="{'main-content-inner':isUserLoggedIn && userType==='admin'}">

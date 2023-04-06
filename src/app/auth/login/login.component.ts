@@ -20,6 +20,14 @@ export class LoginComponent implements OnInit {
       userName: new FormControl('',Validators.required),
       password: new FormControl('',Validators.required),
     });
+    if(this.authenticateService.isUserLoggedIn){
+      const user=JSON.parse(localStorage.getItem('currentUser')!);
+      if(user?.user?.usertype=='admin'){
+        this.router.navigate(['/admin']);
+      }else{
+        this.router.navigate(['/user/dashboard']);
+      }
+    }
   }
 
   get loginFormControl(){

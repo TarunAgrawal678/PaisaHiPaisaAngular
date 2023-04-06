@@ -13,11 +13,4 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  showpmdsidebar(): void {
-    console.log("yeszxzXzX");
-  }
-  hidepmdsidebar(): void {
-    console.log("yeszxzXzXzxzxzzXXZ");
-  }
-
 }

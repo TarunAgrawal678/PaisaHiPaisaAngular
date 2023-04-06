@@ -24,6 +24,10 @@ const routes: Routes = [
     path: 'add-user/:id',
     component:AddUserComponent
   },
+  {
+    path: 'add-user',
+    component:AddUserComponent
+  },
 ];
 
 @NgModule({
