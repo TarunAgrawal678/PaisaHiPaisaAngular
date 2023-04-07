@@ -3,7 +3,8 @@
     <div class="col-md-2" *ngIf="isUserLoggedIn && userType==='admin'">
       <app-sidebar></app-sidebar>
     </div>
-    <div class="pr-0" [ngClass]="{'col-md-10':isUserLoggedIn && userType==='admin'}">
+    <div class="pr-0" [ngClass]="
+    {'col-md-10':isUserLoggedIn && userType==='admin','col-md-12':isUserLoggedIn && userType==='user'}">
       <div [ngClass]="{'main-content':isUserLoggedIn && userType==='admin'}">
         <app-header *ngIf="isUserLoggedIn && userType==='admin'"></app-header>
         <div [ngClass]="{'main-content-inner':isUserLoggedIn && userType==='admin'}">
@@ -12,5 +13,6 @@
       </div>
     </div>
   </div>
-  <app-footer *ngIf="isUserLoggedIn && userType==='admin'"></app-footer>
+  <app-footer class="row" *ngIf="isUserLoggedIn && userType==='admin'"></app-footer>
 </div>
+<!-- <router-outlet></router-outlet> -->

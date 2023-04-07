@@ -89,17 +89,14 @@ li span {
 }
 
 .nav-items {
-  font-size: 1.6rem;
+  font-size: 1rem;
   text-decoration: none;
-
   display: block;
-  line-height: 5rem;
-  padding: 0 2rem;
+  line-height: 2rem;
+  padding: 0 11px;
   color: inherit;
   cursor: pointer;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 d .nav-items:hover {
@@ -216,5 +213,8 @@ d .nav-items:hover {
   border-radius: 0.5rem;
   box-shadow: 0 0 0.2rem #00cbd6, 0 0 1rem #00cbd6, 0 0 1rem #00cbd6,
     0 0 2rem #00cbd6;
+}
+.dd-menu-margin{
+  margin:-15px 25px 0px;
 }
     

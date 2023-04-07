@@ -6,23 +6,35 @@
 }
 .clock-block{
     border: 1px solid black;
-    width: 124px;
+    width: auto;
     background: black;
     color: red;
-    font-size: 29px;
+    font-size: 44px;
+    text-align: center;
+    padding: 20px 0;
 }
+
 .number-plate{
-    border: 1px solid black;
+    border: 1px solid black;    
     background: #fff;
     font-weight: 900;
     padding: 34px;
     text-align: center;
+    height: 50vh;
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .winning-number{
-    font-size: 10rem;
-    padding: 46px;
-    border: 1px solid black;
-    border-radius: 63%;
+    font-size: 100px;
+    padding: 0;
+    border: 5px solid black;
+    border-radius: 50%;
+    /* margin-top: 37px; */
+    height: 200px;
+    width: 200px;
+    line-height: 190px;
 }
 .sub-box{
     border: 1px solid white;
