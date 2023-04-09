@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UserReportService } from '../user-report.service';
-declare let $: any;
+
 @Component({
-  selector: 'app-user-report',
-  templateUrl: './user-report.component.html',
-  styleUrls: ['./user-report.component.scss']
+  selector: 'app-transaction',
+  templateUrl: './transaction.component.html',
+  styleUrls: ['./transaction.component.scss']
 })
-export class UserReportComponent implements OnInit {
+export class TransactionComponent implements OnInit {
 
   userId!:number;
   reportData:Array<any>=[];
@@ -19,23 +19,12 @@ export class UserReportComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.userId = parseInt(this.activatedRoute.snapshot.paramMap.get('id')!);
-    if(this.userId){
-      this.getUserReport();
-    }else{
-      this.getAllUserReport();
-    }
+    this.getTransactionReport();
   }
 
-  getUserReport(){
-    this.userReportService.getUserReport(this.userId).subscribe(data=>{
+  getTransactionReport(){
+    this.userReportService.getTransactionReport().subscribe(data=>{
       this.reportData=data.data;
-    });
-  }
-
-  getAllUserReport(){
-    this.userReportService.getAllUserReport().subscribe(data=>{
-      this.reportData=data.data.rows;
     });
   }
 
@@ -47,4 +36,3 @@ export class UserReportComponent implements OnInit {
     this.page = 1;
   }
 }
-

@@ -22,4 +22,8 @@ export class UserReportService {
   getBetsReport():Observable<any>{
     return this.http.get<any>(this.apiUrl+'/allbets');
   }
+
+  getTransactionReport():Observable<any>{
+    return this.http.get<any>(this.apiUrl+'/all/transactions');
+  }
 }

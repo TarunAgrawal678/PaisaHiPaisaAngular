@@ -2,8 +2,7 @@
     <div class="card-body">
       <h4 class="header-title">User Report</h4>
       <div class="data-tables datatable-dark">
-        <table id="dataTable" class="text-center">
-
+        <table class="text-center table">
           <thead class="text-capitalize">
             <tr>
               <th>Amount</th>
@@ -14,15 +13,27 @@
             </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let report of reportData;index as i">
+              <tr *ngFor="let report of reportData | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };index as i">
                 <td>{{report.bet}}</td>
                 <td></td>
                 <td></td>
                 <td>{{report.timestamp}}</td>
               </tr>
           </tbody>
-
         </table>
+        <div class="d-flex justify-content-center">
+          <pagination-controls
+            previousLabel="Prev"
+            nextLabel="Next"
+            (pageChange)="onTableDataChange($event)"
+          >
+          </pagination-controls>
+        </div>
       </div>
     </div>
   </div>

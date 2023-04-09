@@ -1,7 +1,9 @@
 <div class="container border mt-4 bg-light-blue">
   <div class="row" style="height: 3rem">
     <div class="col-md-4"></div>
-    <div class="col-md-8"></div>
+    <div class="col-md-8">
+      <button class="btn btn-success pull-right" routerLink="/user/dashboard">Back</button>
+    </div>
   </div>
   <div class="row border bg-blue">
     <div class="col-md-12 text-center text-light">Navigation Menu</div>
@@ -16,7 +18,6 @@
         </div>
 
         <div class="row justify-content-center">
-          <!-- <div class="col-md-4"></div> -->
           <div class="col-md-6">
             <div class="clock-block mb-2">
               <span>{{getFormatTime(resultData[0]?.start_time)}}</span>

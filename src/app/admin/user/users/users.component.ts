@@ -20,11 +20,6 @@ export class UsersComponent implements OnInit {
     private toastr: ToastrService) {}
 
   ngOnInit(): void {
-    if ($('#dataTable3').length) {
-      $('#dataTable3').DataTable({
-        responsive: true,
-      });
-    }
     this.getAllUsers();
   }
 
@@ -55,11 +50,9 @@ export class UsersComponent implements OnInit {
 
   onTableDataChange(event: any) {
     this.page = event;
-    this.getAllUsers();
   }
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.getAllUsers();
   }
 }

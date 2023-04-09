@@ -1,30 +1,34 @@
 <div class="card">
     <div class="card-body">
-      <h4 class="header-title">Bet Report</h4>
+      <h4 class="header-title">Transaction Report</h4>
       <div class="data-tables datatable-dark">
         <table class="text-center table">
           <thead class="text-capitalize">
             <tr>
-              <th>Bet</th>
-              <th>Number</th>
               <th>Name</th>
+              <th>User Id</th>
               <th>Mobile Number</th>
-              <th>Time Stamp</th>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Timestamp</th>
+              <th>Status</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let report of betsReport| paginate
+              <tr *ngFor="let report of reportData | paginate
               : {
                   itemsPerPage: tableSize,
                   currentPage: page,
                   totalItems: count
                 };index as i">
-                <td>{{report.bet}}</td>
-                <td>{{report.value}}</td>
-                <td>{{report.name}}</td>
-                <td>{{report.mobile_number}}</td>
+                <td></td>
+                <td>{{report.user_id}}</td>
+                <td></td>
+                <td>{{report.amount}}</td>
+                <td>{{report.type}}</td>
                 <td>{{report.timestamp}}</td>
+                <td>{{report.status}}</td>
               </tr>
           </tbody>
         </table>

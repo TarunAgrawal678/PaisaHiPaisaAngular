@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-body">
-    <h4 class="header-title">Transactions</h4>
+    <h4 class="header-title">User Report</h4>
     <div class="data-tables datatable-dark">
-      <table id="dataTable3" class="text-center">
+      <table class="text-center table">
         <thead class="text-capitalize">
           <tr>
             <th>Name</th>
@@ -14,127 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <!-- <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr>
-            <tr>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-              <td>test</td>
-            </tr> -->
-          <ng-container
+          <tr
             *ngFor="
               let user of users
                 | paginate
@@ -146,32 +26,30 @@
               index as i
             "
           >
-            <tr>
-              <td>{{ user.name }}</td>
-              <td>{{ user.mobile_number }}</td>
-              <td>{{ user.wallet_balance }}</td>
-              <td>{{ user.usertype }}</td>
-              <td>
-                <i
-                  title="Edit user"
-                  class="fa fa-edit text-info pointer"
-                  (click)="editUser(user.id)"
-                ></i
-                >&nbsp;
-                <i
-                  title="User history"
-                  class="fa fa-history pointer"
-                  (click)="showUserReport(user.id)"
-                ></i
-                >&nbsp;
-                <i
-                  title="Dlete user"
-                  class="fa fa-trash text-danger pointer"
-                  (click)="deleteUser(user.id)"
-                ></i>
-              </td>
-            </tr>
-          </ng-container>
+            <td>{{ user.name }}</td>
+            <td>{{ user.mobile_number }}</td>
+            <td>{{ user.wallet_balance }}</td>
+            <td>{{ user.usertype }}</td>
+            <td>
+              <i
+                title="Edit user"
+                class="fa fa-edit text-info pointer"
+                (click)="editUser(user.id)"
+              ></i
+              >&nbsp;
+              <i
+                title="User history"
+                class="fa fa-history pointer"
+                (click)="showUserReport(user.id)"
+              ></i
+              >&nbsp;
+              <i
+                title="Dlete user"
+                class="fa fa-trash text-danger pointer"
+                (click)="deleteUser(user.id)"
+              ></i>
+            </td>
+          </tr>
         </tbody>
       </table>
       <div class="d-flex justify-content-center">

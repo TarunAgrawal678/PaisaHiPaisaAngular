@@ -11,13 +11,13 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./add-user.component.scss'],
 })
 export class AddUserComponent implements OnInit {
-
   userId!: any;
   userForm!: FormGroup;
-  buttonLabel:string='Add';
-  stateData:Array<any>=[];
-  cityData: Array<any>=[];
-  userType!:string;
+  buttonLabel: string = 'Add';
+  stateData: Array<any> = [];
+  cityData: Array<any> = [];
+  userType!: string;
+  walletAmount!: number;
   constructor(
     private toastr: ToastrService,
     private router: Router,
@@ -27,10 +27,12 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.activatedRoute.snapshot.paramMap.get('id') || '';
-    this.userType= JSON.parse(localStorage.getItem('currentUser')!).user.usertype;
+    this.userType = JSON.parse(
+      localStorage.getItem('currentUser')!
+    ).user.usertype;
     this.getAllState();
     if (this.userId) {
-      this.buttonLabel='Update';
+      this.buttonLabel = 'Update';
       this.getUser();
       this.userForm = new FormGroup({
         name: new FormControl('', Validators.required),
@@ -41,7 +43,7 @@ export class AddUserComponent implements OnInit {
         walletBalance: new FormControl('', Validators.required),
         userType: new FormControl('user'),
       });
-    }else{
+    } else {
       this.userForm = new FormGroup({
         name: new FormControl('', Validators.required),
         password: new FormControl('', Validators.required),
@@ -68,6 +70,7 @@ export class AddUserComponent implements OnInit {
     this.userForm.get('city')?.setValue(user.city);
     this.userForm.get('mobileNumber')?.setValue(user.mobile_number);
     this.userForm.get('walletBalance')?.setValue(user.wallet_balance);
+    this.walletAmount=user.wallet_balance;
   }
 
   onSubmit(form: FormGroup) {
@@ -86,9 +89,12 @@ export class AddUserComponent implements OnInit {
       deleted: 0,
       usertype: form.value.userType,
     };
-    if(this.userId){
+    if (this.walletAmount == form.value.walletBalance) {
+      delete user.wallet_balance;
+    }
+    if (this.userId) {
       delete user.password;
-      this.userService.updateUser(user,this.userId).subscribe(
+      this.userService.updateUser(user, this.userId).subscribe(
         (data) => {
           this.toastr.success('User updated successfully!');
           this.router.navigate(['/admin/users']);
@@ -97,7 +103,7 @@ export class AddUserComponent implements OnInit {
           this.toastr.error(err.message);
         }
       );
-    }else{
+    } else {
       this.userService.addUser(user).subscribe(
         (data) => {
           this.toastr.success('User added successfully!');
@@ -110,24 +116,24 @@ export class AddUserComponent implements OnInit {
     }
   }
 
-  getAllState(){
-    this.userService.getAllState().subscribe(data=>{
-      this.stateData=data.data;
+  getAllState() {
+    this.userService.getAllState().subscribe((data) => {
+      this.stateData = data.data;
     });
   }
 
-  getCity(event:any){
-    const stateId=event.target.value;
+  getCity(event: any) {
+    const stateId = event.target.value;
     this.getCityByStateId(stateId);
   }
-  getCityByStateId(stateId:any){
-    this.userService.getCityById(stateId).subscribe(data=>{
-      this.cityData=data.data;
+  getCityByStateId(stateId: any) {
+    this.userService.getCityById(stateId).subscribe((data) => {
+      this.cityData = data.data;
     });
   }
-  getStateById(stateId:number){
-    let stateName= this.stateData.find(data=>{
-      if(data.id==stateId){
+  getStateById(stateId: number) {
+    let stateName = this.stateData.find((data) => {
+      if (data.id == stateId) {
         return data;
       }
     })?.name;

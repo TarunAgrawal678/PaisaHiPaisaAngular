@@ -4,8 +4,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { DashboardComponent } from './layout/dashboard/dashboard.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
-import {MatTreeModule} from '@angular/material/tree';
-import {MatIconModule} from '@angular/material/icon';
 import { UsersComponent } from './user/users/users.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
@@ -14,10 +12,15 @@ import { UserReportComponent } from './report/user-report/user-report.component'
 import { TransactionReportComponent } from './report/transaction-report/transaction-report.component';
 import { BetsComponent } from './report/bets/bets.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { TransactionComponent } from './report/transaction/transaction.component';
 
 const routes: Routes = [
   {
     path: '',
+    component:DashboardComponent
+  },
+  {
+    path: 'dashboard',
     component:DashboardComponent
   },
   {
@@ -44,6 +47,10 @@ const routes: Routes = [
     path: 'bet-report',
     component:BetsComponent
   },
+  {
+    path: 'transaction-report',
+    component:TransactionComponent
+  },
 ];
 
 @NgModule({
@@ -56,12 +63,11 @@ const routes: Routes = [
     SidebarComponent,
     UserReportComponent,
     TransactionReportComponent,
-    BetsComponent
+    BetsComponent,
+    TransactionComponent
   ],
   imports: [
     CommonModule,
-    MatTreeModule,
-    MatIconModule,
     ReactiveFormsModule,
     NgxPaginationModule,
     RouterModule.forChild(routes)
