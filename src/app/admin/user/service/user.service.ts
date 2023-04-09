@@ -30,4 +30,12 @@ export class UserService {
   deleteUser(userId:number){
     return this.http.delete<any>(this.apiUrl+'/users/'+userId);
   }
+
+  getAllState():Observable<any>{
+    return this.http.get<any>(this.apiUrl+'/all/states');
+  }
+
+  getCityById(stateId:number):Observable<any>{
+    return this.http.get<any>(this.apiUrl+'/cities/'+stateId);
+  }
 }

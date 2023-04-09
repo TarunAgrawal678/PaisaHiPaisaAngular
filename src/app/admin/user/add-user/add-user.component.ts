@@ -11,9 +11,13 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./add-user.component.scss'],
 })
 export class AddUserComponent implements OnInit {
+
   userId!: any;
   userForm!: FormGroup;
   buttonLabel:string='Add';
+  stateData:Array<any>=[];
+  cityData: Array<any>=[];
+  userType!:string;
   constructor(
     private toastr: ToastrService,
     private router: Router,
@@ -22,18 +26,31 @@ export class AddUserComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      state: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      mobileNumber: new FormControl('', Validators.required),
-      walletBalance: new FormControl('', Validators.required),
-    });
     this.userId = this.activatedRoute.snapshot.paramMap.get('id') || '';
+    this.userType= JSON.parse(localStorage.getItem('currentUser')!).user.usertype;
+    this.getAllState();
     if (this.userId) {
-      this.buttonLabel='Edit';
+      this.buttonLabel='Update';
       this.getUser();
+      this.userForm = new FormGroup({
+        name: new FormControl('', Validators.required),
+        password: new FormControl(''),
+        state: new FormControl('', Validators.required),
+        city: new FormControl('', Validators.required),
+        mobileNumber: new FormControl('', Validators.required),
+        walletBalance: new FormControl('', Validators.required),
+        userType: new FormControl('user'),
+      });
+    }else{
+      this.userForm = new FormGroup({
+        name: new FormControl('', Validators.required),
+        password: new FormControl('', Validators.required),
+        state: new FormControl('', Validators.required),
+        city: new FormControl('', Validators.required),
+        mobileNumber: new FormControl('', Validators.required),
+        walletBalance: new FormControl('', Validators.required),
+        userType: new FormControl('user'),
+      });
     }
   }
 
@@ -47,10 +64,12 @@ export class AddUserComponent implements OnInit {
     this.userForm.get('name')?.setValue(user.name);
     this.userForm.get('password')?.setValue(user.password);
     this.userForm.get('state')?.setValue(user.state);
+    this.getCityByStateId(user.state);
     this.userForm.get('city')?.setValue(user.city);
     this.userForm.get('mobileNumber')?.setValue(user.mobile_number);
     this.userForm.get('walletBalance')?.setValue(user.wallet_balance);
   }
+
   onSubmit(form: FormGroup) {
     if (form.invalid) {
       this.toastr.error('Please fill all mandatory fields!!!');
@@ -65,9 +84,10 @@ export class AddUserComponent implements OnInit {
       city: form.value.city,
       state: form.value.state,
       deleted: 0,
-      usertype: 'user',
+      usertype: form.value.userType,
     };
     if(this.userId){
+      delete user.password;
       this.userService.updateUser(user,this.userId).subscribe(
         (data) => {
           this.toastr.success('User updated successfully!');
@@ -88,6 +108,30 @@ export class AddUserComponent implements OnInit {
         }
       );
     }
+  }
+
+  getAllState(){
+    this.userService.getAllState().subscribe(data=>{
+      this.stateData=data.data;
+    });
+  }
+
+  getCity(event:any){
+    const stateId=event.target.value;
+    this.getCityByStateId(stateId);
+  }
+  getCityByStateId(stateId:any){
+    this.userService.getCityById(stateId).subscribe(data=>{
+      this.cityData=data.data;
+    });
+  }
+  getStateById(stateId:number){
+    let stateName= this.stateData.find(data=>{
+      if(data.id==stateId){
+        return data;
+      }
+    })?.name;
+    return stateName;
   }
   ngOnDestroy() {}
 }

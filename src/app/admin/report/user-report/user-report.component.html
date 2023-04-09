@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-body">
+      <h4 class="header-title">User Report</h4>
+      <div class="data-tables datatable-dark">
+        <table id="dataTable" class="text-center">
+
+          <thead class="text-capitalize">
+            <tr>
+              <th>Amount</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Time Stamp</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let report of reportData;index as i">
+                <td>{{report.bet}}</td>
+                <td></td>
+                <td></td>
+                <td>{{report.timestamp}}</td>
+              </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>

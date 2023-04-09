@@ -82,8 +82,8 @@ export class BetDashboardComponent implements OnInit {
       "bet_id":this.betId
     }
     this.betService.placeBet(body).subscribe(data=>{
-      console.log(data);
       this.toastr.success('Bet placed!!');
+      this.getCurrentTime();
     })
   }
 

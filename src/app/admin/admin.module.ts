@@ -10,6 +10,10 @@ import { UsersComponent } from './user/users/users.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserReportComponent } from './report/user-report/user-report.component';
+import { TransactionReportComponent } from './report/transaction-report/transaction-report.component';
+import { BetsComponent } from './report/bets/bets.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const routes: Routes = [
   {
@@ -28,6 +32,18 @@ const routes: Routes = [
     path: 'add-user',
     component:AddUserComponent
   },
+  {
+    path: 'user-report/:id',
+    component:UserReportComponent
+  },
+  {
+    path: 'user-report',
+    component:UserReportComponent
+  },
+  {
+    path: 'bet-report',
+    component:BetsComponent
+  },
 ];
 
 @NgModule({
@@ -37,13 +53,17 @@ const routes: Routes = [
     FooterComponent,
     UsersComponent,
     AddUserComponent,
-    SidebarComponent
+    SidebarComponent,
+    UserReportComponent,
+    TransactionReportComponent,
+    BetsComponent
   ],
   imports: [
     CommonModule,
     MatTreeModule,
     MatIconModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
     RouterModule.forChild(routes)
   ],
   exports:[

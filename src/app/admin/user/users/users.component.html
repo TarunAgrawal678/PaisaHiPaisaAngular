@@ -1,34 +1,187 @@
 <div class="card">
-    <div class="card-body">
-      <h4 class="header-title">Transactions</h4>
-      <div class="data-tables datatable-dark">
-        <table id="dataTable3" class="text-center">
-
-          <thead class="text-capitalize">
-            <tr>
-              <th>Name</th>
-              <th>Mobile Number</th>
-              <th>Amount</th>
-              <th>Type</th>
-              <th>Action</th>
-              <th></th>
+  <div class="card-body">
+    <h4 class="header-title">Transactions</h4>
+    <div class="data-tables datatable-dark">
+      <table id="dataTable3" class="text-center">
+        <thead class="text-capitalize">
+          <tr>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Action</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
             </tr>
-          </thead>
-          <tbody>
-              <tr *ngFor="let user of users;index as i">
-                <td>{{user.name}}</td>
-                <td>{{user.mobile_number}}</td>
-                <td>{{user.wallet_balance}}</td>
-                <td>{{user.usertype}}</td>
-                <td> 
-                  <i class="fa fa-edit text-info pointer" (click)="editUser(user.id)"></i>&nbsp;
-                  <i class="fa fa-history pointer"></i>&nbsp;
-                  <i class="fa fa-trash text-danger pointer" (click)="deleteUser(user.id)"></i>
-                </td>
-              </tr>
-          </tbody>
-
-        </table>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr>
+            <tr>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+              <td>test</td>
+            </tr> -->
+          <ng-container
+            *ngFor="
+              let user of users
+                | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              index as i
+            "
+          >
+            <tr>
+              <td>{{ user.name }}</td>
+              <td>{{ user.mobile_number }}</td>
+              <td>{{ user.wallet_balance }}</td>
+              <td>{{ user.usertype }}</td>
+              <td>
+                <i
+                  title="Edit user"
+                  class="fa fa-edit text-info pointer"
+                  (click)="editUser(user.id)"
+                ></i
+                >&nbsp;
+                <i
+                  title="User history"
+                  class="fa fa-history pointer"
+                  (click)="showUserReport(user.id)"
+                ></i
+                >&nbsp;
+                <i
+                  title="Dlete user"
+                  class="fa fa-trash text-danger pointer"
+                  (click)="deleteUser(user.id)"
+                ></i>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
       </div>
     </div>
   </div>
+</div>

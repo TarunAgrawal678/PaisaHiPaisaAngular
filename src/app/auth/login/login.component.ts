@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     });
     if(this.authenticateService.isUserLoggedIn){
       const user=JSON.parse(localStorage.getItem('currentUser')!);
-      if(user?.user?.usertype=='admin'){
+      if(user?.user?.usertype=='admin' || user?.user?.usertype=='superadmin'){
         this.router.navigate(['/admin']);
       }else{
         this.router.navigate(['/user/dashboard']);
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
       data=>{
         if(data.status){
           this.toastr.success('Logged in successfully!');
-          if(data.user.usertype==='admin')
+          if(data.user.usertype==='admin' || data.user.usertype=='superadmin')
             this.router.navigate(['/admin']);
           else
             this.router.navigate(['/user/dashboard']);

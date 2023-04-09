@@ -1,18 +1,18 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2" *ngIf="isUserLoggedIn && userType==='admin'">
+    <div class="col-md-2" *ngIf="isUserLoggedIn && (userType==='admin' || userType==='superadmin')">
       <app-sidebar></app-sidebar>
     </div>
     <div class="pr-0" [ngClass]="
-    {'col-md-10':isUserLoggedIn && userType==='admin','col-md-12':isUserLoggedIn && userType==='user'}">
-      <div [ngClass]="{'main-content':isUserLoggedIn && userType==='admin'}">
-        <app-header *ngIf="isUserLoggedIn && userType==='admin'"></app-header>
-        <div [ngClass]="{'main-content-inner':isUserLoggedIn && userType==='admin'}">
+    {'col-md-10':isUserLoggedIn && (userType==='admin' || userType==='superadmin'),'col-md-12':isUserLoggedIn && userType==='user'}">
+      <div [ngClass]="{'main-content':isUserLoggedIn && (userType==='admin' || userType==='superadmin')}">
+        <app-header *ngIf="isUserLoggedIn && (userType==='admin' || userType==='superadmin')"></app-header>
+        <div [ngClass]="{'main-content-inner':isUserLoggedIn && (userType==='admin' || userType==='superadmin')}">
             <router-outlet></router-outlet>
         </div>
       </div>
     </div>
   </div>
-  <app-footer class="row" *ngIf="isUserLoggedIn && userType==='admin'"></app-footer>
+  <app-footer class="row" *ngIf="isUserLoggedIn && (userType==='admin' || userType==='superadmin')"></app-footer>
 </div>
 <!-- <router-outlet></router-outlet> -->

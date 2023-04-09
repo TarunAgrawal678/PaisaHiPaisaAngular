@@ -11,6 +11,10 @@ declare let $: any;
 export class UsersComponent implements OnInit {
 
   users:Array<any>=[];
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [3, 6, 9, 12];
   constructor(private userService:UserService,
     private router:Router,
     private toastr: ToastrService) {}
@@ -43,5 +47,19 @@ export class UsersComponent implements OnInit {
 
   editUser(userId:number){
     this.router.navigate(['/admin/add-user/'+userId]);
+  }
+
+  showUserReport(userId:number){
+    this.router.navigate(['/admin/user-report/'+userId]);
+  }
+
+  onTableDataChange(event: any) {
+    this.page = event;
+    this.getAllUsers();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getAllUsers();
   }
 }
