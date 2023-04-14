@@ -38,4 +38,8 @@ export class UserService {
   getCityById(stateId:number):Observable<any>{
     return this.http.get<any>(this.apiUrl+'/cities/'+stateId);
   }
+
+  changePassword(body:any):Observable<any>{
+    return this.http.post<any>(this.apiUrl+'/change-password',body);
+  }
 }

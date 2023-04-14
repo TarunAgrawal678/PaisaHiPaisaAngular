@@ -16,7 +16,13 @@ export class UserReportService {
   }
 
   getAllUserReport():Observable<any>{
+    const user=JSON.parse(localStorage.getItem('currentUser')!);
     return this.http.get<any>(this.apiUrl+'/bets');
+    // return this.http.get<any>(this.apiUrl+'/bets?user_id='+user.user.id);
+  }
+
+  getUserReportByUserId(userId:any):Observable<any>{
+    return this.http.get<any>(this.apiUrl+'/bets?user_id='+userId);
   }
 
   getBetsReport():Observable<any>{
@@ -25,5 +31,9 @@ export class UserReportService {
 
   getTransactionReport():Observable<any>{
     return this.http.get<any>(this.apiUrl+'/all/transactions');
+  }
+
+  getDashboardReport():Observable<any>{
+    return this.http.get<any>(this.apiUrl+'/admin/dashboard');
   }
 }

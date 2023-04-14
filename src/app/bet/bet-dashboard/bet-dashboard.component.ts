@@ -24,7 +24,6 @@ export class BetDashboardComponent implements OnInit {
       this.bets.push(i.toString());
       this.amountInput.push({amount:null,value:i.toString()});
     }
-    // this.timer(9);
     this.getCurrentTime();
   }
 
@@ -72,7 +71,7 @@ export class BetDashboardComponent implements OnInit {
     let prevTimeSec1=time.split(':');
     let prevTimeSec2=parseInt(prevTimeSec1[2])+ (parseInt(prevTimeSec1[1])*60) + (parseInt(prevTimeSec1[0])*60*60);
     let diffInSec=currentTimeSec-prevTimeSec2;
-    this.timer(540-diffInSec);
+    this.timer(3600-diffInSec);
   }
 
   confirmBet(amount:number,value:string){
@@ -82,8 +81,12 @@ export class BetDashboardComponent implements OnInit {
       "bet_id":this.betId
     }
     this.betService.placeBet(body).subscribe(data=>{
-      this.toastr.success('Bet placed!!');
-      this.getCurrentTime();
+      if(data.status>1){
+        this.toastr.error(data.message);
+      }else{
+        this.toastr.success('Bet placed!!');
+        this.getCurrentTime();
+      }
     })
   }
 

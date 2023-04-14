@@ -2,7 +2,7 @@
   <div class="card-body">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm)">
       <div class="form-group">
-        <h4 class="header-title">Add User details</h4>
+        <h4 class="header-title">{{buttonLabel}} User details</h4>
         <label for="example-text-input" class="col-form-label"
           >Name<span class="text-danger">*</span></label
         >
@@ -15,9 +15,9 @@
           formControlName="name"
         />
       </div>
-      <div class="form-group" *ngIf="buttonLabel==='Add'">
+      <div class="form-group">
         <label for="inputPassword" class=""
-          >Password<span class="text-danger">*</span></label
+          >Password<span *ngIf="buttonLabel=='Add'" class="text-danger">*</span></label
         >
         <input
           type="password"
@@ -28,6 +28,19 @@
           formControlName="password"
         />
       </div>
+      <!-- <div class="form-group" *ngIf="buttonLabel!='Add'">
+        <label for="confirmPassword" class=""
+          >Confirm Password<span class="text-danger">*</span></label
+        >
+        <input
+          type="password"
+          class="form-control"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+        />
+      </div> -->
       <div class="form-group">
         <label for="state" class="col-form-label"
           >State<span class="text-danger">*</span></label

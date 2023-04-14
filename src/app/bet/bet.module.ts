@@ -5,6 +5,8 @@ import { ResultComponent } from './result/result.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserReportComponent } from './user-report/user-report.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 const routes: Routes = [
   {
@@ -14,6 +16,10 @@ const routes: Routes = [
   {
     path: 'result',
     component:ResultComponent
+  },
+  {
+    path: 'report',
+    component:UserReportComponent
   }
 ];
 
@@ -21,11 +27,13 @@ const routes: Routes = [
   declarations: [
     BetDashboardComponent,
     ResultComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserReportComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    NgxPaginationModule,
     RouterModule.forChild(routes)
   ]
 })

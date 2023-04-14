@@ -7,7 +7,7 @@
             <tr>
               <th>Name</th>
               <th>User Id</th>
-              <th>Mobile Number</th>
+              <!-- <th>Mobile Number</th> -->
               <th>Amount</th>
               <th>Type</th>
               <th>Timestamp</th>
@@ -22,9 +22,9 @@
                   currentPage: page,
                   totalItems: count
                 };index as i">
-                <td></td>
+                <td>{{report?.name}}</td>
                 <td>{{report.user_id}}</td>
-                <td></td>
+                <!-- <td></td> -->
                 <td>{{report.amount}}</td>
                 <td>{{report.type}}</td>
                 <td>{{report.timestamp}}</td>

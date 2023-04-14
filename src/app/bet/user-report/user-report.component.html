@@ -1,0 +1,65 @@
+<div class="card">
+  <div class="card-body">
+    <!-- <div class="">
+      <h4 class="" data-toggle="dropdown">
+        <div class="navicon">
+          <div></div>
+        </div>
+      </h4>
+      <div class="dropdown-menu dd-menu-margin">
+        <a class="nav-items">Profile</a>
+        <a class="nav-items" routerLink="/user/result">Result</a>
+        <a class="nav-items" routerLink="/admin/bet-report">Report</a>
+        <a class="nav-items" (click)="logout()">Logout</a>
+      </div>
+    </div> -->
+    <button routerLink="/user/dashboard" class="btn btn-success pull-right">
+      Back To Dashboard
+    </button>
+    <h4 class="header-title">Bet Report</h4>
+    <div class="data-tables datatable-dark">
+      <table class="text-center table">
+        <thead class="text-capitalize">
+          <tr>
+            <th>Bet Id</th>
+            <th>Bet</th>
+            <th>Number</th>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Time Stamp</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="
+              let report of betsReport
+                | paginate
+                  : {
+                      itemsPerPage: tableSize,
+                      currentPage: page,
+                      totalItems: count
+                    };
+              index as i
+            "
+          >
+            <td>{{ report.bet_id }}</td>
+            <td>{{ report.bet }}</td>
+            <td>{{ report.value }}</td>
+            <td>{{ report.name }}</td>
+            <td>{{ report.mobile_number }}</td>
+            <td>{{ report.timestamp }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Prev"
+          nextLabel="Next"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,8 @@ export class AddUserComponent implements OnInit {
   cityData: Array<any> = [];
   userType!: string;
   walletAmount!: number;
+  oldPassword!:string;
+  uniqueUserId!:string;
   constructor(
     private toastr: ToastrService,
     private router: Router,
@@ -41,7 +43,7 @@ export class AddUserComponent implements OnInit {
         city: new FormControl('', Validators.required),
         mobileNumber: new FormControl('', Validators.required),
         walletBalance: new FormControl('', Validators.required),
-        userType: new FormControl('user'),
+        userType: new FormControl('user')
       });
     } else {
       this.userForm = new FormGroup({
@@ -58,19 +60,21 @@ export class AddUserComponent implements OnInit {
 
   getUser() {
     this.userService.getUser(this.userId).subscribe((data) => {
-      console.log(data);
       this.fetchUserData(data.data);
     });
   }
   fetchUserData(user: any) {
+    this.uniqueUserId=user.user_id;
     this.userForm.get('name')?.setValue(user.name);
-    this.userForm.get('password')?.setValue(user.password);
+    // this.userForm.get('password')?.setValue(user.password);
     this.userForm.get('state')?.setValue(user.state);
     this.getCityByStateId(user.state);
     this.userForm.get('city')?.setValue(user.city);
     this.userForm.get('mobileNumber')?.setValue(user.mobile_number);
     this.userForm.get('walletBalance')?.setValue(user.wallet_balance);
+    // this.userForm.get('password')?.setValue(user.wallet_balance);
     this.walletAmount=user.wallet_balance;
+    this.oldPassword=user.password;
   }
 
   onSubmit(form: FormGroup) {
@@ -78,8 +82,16 @@ export class AddUserComponent implements OnInit {
       this.toastr.error('Please fill all mandatory fields!!!');
       return;
     }
-    const user = {
-      user_id: 'ta-na-827',
+    if(form.value.password && this.buttonLabel=='Update'){
+      let body={
+        "password":form.value.password,
+        "id":this.userId
+      }
+      this.userService.changePassword(body).subscribe(data=>{
+
+      })
+    }
+    const user:any = {
       name: form.value.name,
       password: form.value.password,
       mobile_number: form.value.mobileNumber,
@@ -94,6 +106,7 @@ export class AddUserComponent implements OnInit {
     }
     if (this.userId) {
       delete user.password;
+      user.user_id=this.uniqueUserId;
       this.userService.updateUser(user, this.userId).subscribe(
         (data) => {
           this.toastr.success('User updated successfully!');
@@ -138,6 +151,12 @@ export class AddUserComponent implements OnInit {
       }
     })?.name;
     return stateName;
+  }
+
+  changePassword(password:string){
+    this.userService.changePassword(password).subscribe((data) => {
+      this.cityData = data.data;
+    });
   }
   ngOnDestroy() {}
 }
