@@ -1,6 +1,11 @@
 <div class="card">
     <div class="card-body">
-      <h4 class="header-title">Dashboard</h4>
+      <!-- <h4 class="header-title">Dashboard</h4> -->
+      <h4>Select Bet</h4>
+      <select>
+        <option value="">Select Bet</option>
+        <option value="" *ngFor="let bet of bets">{{bet.id +'('+bet.start_time+')'}}</option>
+      </select>
       <div class="data-tables datatable-dark">
         <table class="text-center table">
           <thead class="text-capitalize">
@@ -13,7 +18,7 @@
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <!-- <tbody>
               <tr *ngFor="let report of betsReport| paginate
               : {
                   itemsPerPage: tableSize,
@@ -26,7 +31,7 @@
                 <td>{{report.mobile_number}}</td>
                 <td>{{report.start_time}}</td>
               </tr>
-          </tbody>
+          </tbody> -->
         </table>
         <div class="d-flex justify-content-center">
           <pagination-controls

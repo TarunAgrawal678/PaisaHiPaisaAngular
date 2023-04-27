@@ -25,6 +25,10 @@ export class UserReportService {
     return this.http.get<any>(this.apiUrl+'/bets?user_id='+userId);
   }
 
+  getUserReportByBetId(userId:any):Observable<any>{
+    return this.http.get<any>(this.apiUrl+'/bets?bet_id='+userId);
+  }
+
   getBetsReport():Observable<any>{
     return this.http.get<any>(this.apiUrl+'/allbets');
   }

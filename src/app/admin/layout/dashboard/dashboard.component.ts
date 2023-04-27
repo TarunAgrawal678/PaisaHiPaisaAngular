@@ -8,6 +8,7 @@ import { UserReportService } from '../../report/user-report.service';
 export class DashboardComponent implements OnInit {
 
   betsReport:Array<any>=[];
+  bets:Array<any>=[];
   page: number = 1;
   count: number = 0;
   tableSize: number = 7;
@@ -19,9 +20,15 @@ export class DashboardComponent implements OnInit {
   }
 
   getAllBets(){
-    this.userReportService.getDashboardReport().subscribe(data=>{
-      this.betsReport=data.data;
-    })
+    this.userReportService.getBetsReport().subscribe(data=>{
+      this.bets=data.data.rows;
+    });
+  }
+
+  getBetById(betId:number){
+    this.userReportService.getUserReportByBetId(betId).subscribe(data=>{
+      this.bets=data.data.rows;
+    });
   }
 
   onTableDataChange(event: any) {
